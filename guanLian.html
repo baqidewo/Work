@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery\jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <button id="btn1">btn1</button>
+    <button id="btn2">btn2</button>
+
+</body>
+<script>
+    document.getElementById("btn1").onclick = function(){
+        alert("1");
+    }
+    $('#btn2').click(function(){
+        alert("2");
+    })
+    $('#btn2').bind('click',function(){
+        alert("3");
+    })
+</script>
+</html>

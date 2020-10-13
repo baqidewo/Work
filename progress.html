@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            height: 400px;
+            width: 600px;
+            border: 2px solid green;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            line-height: 400px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <button id="btnStart">开始</button>
+    <button id="btnStop">暂停</button>
+    <button id="clearOut">清除</button>
+    <div id="box">
+        <span>当前进度为：</span><span id="infoNum">80%</span>
+        <progress id="progress" value="80" max="100" min="0"></progress>
+    </div>
+</body>
+<script>
+    let btnStart = document.getElementById("btnStart");
+    let btnStop = document.getElementById("btnStop");
+    let infoNum = document.getElementById("infoNum");
+    let progress = document.getElementById("progress");
+    let clear = document.getElementById("clear");
+    let timer = null;
+    infoNum.innerText = "0%";
+    progress.value = 0;
+    btnStart.onclick = function(){
+        timer = setInterval(function(){
+            let progressValue = progress.value;
+            progressValue++;
+            if(progressValue > 100){
+                clearInterval(timer);
+            }else{
+                infoNum.innerText = progressValue + "%";
+                progress.value = progressValue;
+            }
+        },100);
+    }
+    btnStop.onclick = function(){
+        clearInterval(timer);
+    }
+    clearOut.onclick = function(){
+        infoNum.innerText = "0%";
+        progress.value = 0;
+    }
+</script>
+</html>

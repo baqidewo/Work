@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery\jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <input type="checkbox">鸡
+    <input type="checkbox">鸭
+    <input type="checkbox">鱼
+    <input type="checkbox">兔
+    <input type="checkbox">牛
+    <input type="checkbox">猪<br>
+    <input type="button" value="全选">
+    <input type="button" value="不选">
+    <input type="button" value="反选">
+    <input type="button" value="提交">
+    <script>
+        $(document).ready(function(){
+            $(":button:eq(0)").click(function(){
+                $(":checkbox").prop("checked",true);
+            });
+            $(":button:eq(1)").click(function(){
+                $(":checkbox").prop("checked",false);
+            });
+            
+            $("[value='反选']").click(function(){
+                $(":checkbox").each(function(){
+                    if($(this).prop("checked")==true){
+                        $(this).prop("checked",false);
+                    }else{
+                        $(this).prop("checked",true);
+                    }
+            });
+        });
+        $("[value='提交']").click(function(){
+            alert("提交成功");
+        });
+    });
+    </script>
+</body>
+</html>

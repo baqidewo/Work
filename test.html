@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box{
+        width: 600px;
+        height: 400px;
+        border: 2px solid green;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        line-height: 400px;
+        text-align: center;
+    }
+</style>
+<body>
+    <button id="btnStart">开始</button>
+    <button id="btnSpot">暂停</button>
+    <button id="clearOut">清除</button>
+    <div id="box">
+        <span>当前进度为：</span><span id="infoNum">80%</span>
+        <progress id="progress" value="80" max="100" min="0"></progress>
+    </div>
+    <script>
+        let btnStart = document.getElementById("btnStart");
+        let btnSpot = document.getElementById("btnSpot");
+        let infoNum = document.getElementById("infoNum");
+        let progress = document.getElementById("progress");
+        let clear = document.getElementById("clear");
+        let timer = null;
+        progress.value = 0;
+        infoNum.innerText = "0%";
+        btnStart.onclick = function(){
+            btnStart.disabled = true;
+            timer = setInterval(function(){
+                progressValue = progress.value;
+                progressValue++;
+                if(progressValue > 100){
+                    clearInterval(timer);
+                }else{
+                    infoNum.innerText = progressValue + "%";
+                    progress.value = progressValue;
+                }
+            },100);
+        }
+        btnSpot.onclick = function(){
+            clearInterval(timer);
+            btnStart.disabled=false;    
+        }
+        clearOut.onclick = function(){
+            location.reload();
+    }
+    </script>
+</body>
+</html>

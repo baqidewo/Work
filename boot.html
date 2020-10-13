@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery/jquery.js"></script>
+</head>
+<style>
+    img{
+        height: 200px;
+        width: 280px;
+    }
+</style>
+<body>
+    <h2>选择你的爱好</h2>
+    <input type="checkbox">猪肉
+    <input type="checkbox">羊肉
+    <input type="checkbox">牛肉
+    <input type="checkbox">兔肉<br>
+    <input type="button" value="显示图片路径"><br>
+    <input type="button" value="显示选择的爱好"><br>
+    <input type="button" value="改变图片"><br>
+    <input type="button" value="增加图片"><br>
+    <input type="button" value="删除图片"><br>
+    <img id="photo" src="eat.jpg">
+    <script>
+        $(function(){
+            $("[value*='路径']").click(function(){
+                alert($("#photo").attr("src"));
+            });
+            $("[value*='爱好']").click(function(){
+                var str = "您选中的爱好有：\n";
+                $(":checked").each(function(){
+                    str = str+$(this).val()+"\n"
+                }); 
+                alert(str);
+            });
+            $("[value*= '改变']").click(function(){
+                $("#photo").attr("src","3.png");
+            });
+            $("[value*='增加']").click(function(){
+                $("body").append($("<img src = '3.png'>"));
+            });
+            $("[value*='删除']").click(function(){
+                $("img").remove();
+
+            });
+        })
+    </script>
+</body>
+</html>

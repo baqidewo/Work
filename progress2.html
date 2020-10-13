@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box{
+        width: 600px;
+        height: 400px;
+        border: 2px solid green;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        line-height: 400px;
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="box">
+        <button id="btnStart">开始</button>
+        <button id="btnStorp">暂停</button>
+        <span>当前进度为:</span><span id="infoNum">80%</span>
+        <progress value="80" max="100" min="0" id="progress"></progress>
+    </div>
+</body>
+<script>
+    let btnStart = document.getElementById("btnStart");
+    let btnStorp = document.getElementById("btnStorp");
+    let infoNum = document.getElementById("infoNum");
+    let progress = document.getElementById("progress");
+    let timer = null;
+
+    infoNum.innerText = "0%";
+    progress.value = 0;
+    btnStart.onclick = function(){
+        timer = setInterval(function(){
+        let progressValue = progress.value;
+        progressValue ++;
+        if(progressValue > 100){
+            clearInterval(timer);
+        }
+        else{
+            infoNum.innerText = progressValue + "%";
+            progress.value = progressValue;
+            }
+        },100);
+    }
+        btnStorp.onclick = function(){
+            clearInterval(timer);
+        }
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery\jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <table rules=rows style="margin: auto">
+        <tr target="first">
+            <th width="200xp" align="left">产品名称</th>
+            <th width="200xp" align="left">产地</th>
+            <th width="200xp" align="left">厂商</th>
+        </tr>
+        <tr>
+            <td>爱美电视机</td>
+            <td>福州</td>
+            <td>美好电子</td>
+        </tr>
+        <tr>
+            <td>美好电磁炉</td>
+            <td>北京</td>
+            <td>美好集团</td>
+        </tr>
+        <tr>
+            <td>理想电脑</td>
+            <td>沈阳</td>
+            <td>理想科技</td>
+        </tr>
+        <tr>
+            <td>编程词典</td>
+            <td>长春</td>
+            <td>明日科技</td>
+        </tr>
+    </table>
+    <script>
+        $(function(){
+           $("tr:odd").css("backgroundColor","yellow");
+           $("tr:even[target!='first']").css("backgroundColor","blue");
+           var color;
+           $("tr:gt(0)").hover(function(){
+               color = $(this).css("backgroundColor");
+               $(this).css("backgroundColor","pink");
+           },function(){
+               $(this).css("backgroundColor",color);
+           });
+        });
+    </script>
+</body>
+</html>
